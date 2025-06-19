@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viktor Kabelkov - Senior QA Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.8)); }
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .badge:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .experience-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            border: 4px solid #0f0f23;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8b5cf6;
+        }
+
+        .location-date {
+            text-align: right;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .job-description {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .location-date {
+                text-align: left;
+            }
+            
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline-dot {
+                left: -1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="profile-image">VK</div>
+            <h1 class="name">Viktor Kabelkov</h1>
+            <p class="title">Senior QA Automation Engineer</p>
+            <div class="skills-badges">
+                <span class="badge">Python Automation</span>
+                <span class="badge">Selenium</span>
+                <span class="badge">Android Testing</span>
+                <span class="badge">API Testing</span>
+                <span class="badge">Cypress</span>
+                <span class="badge">Appium</span>
+                <span class="badge">AR/VR Testing</span>
+            </div>
+        </header>
+
+        <section class="experience-section">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior QA Automation Engineer</h3>
+                            <p class="company">Mason America</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Seattle, WA</div>
+                            <div>May 2023 - Aug 2024</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Led manual and automated testing for Android devices and optimized mobile dashboards. Developed device management solutions to streamline security and enhance performance. Led the execution and analysis of Android Compatibility Test Suite (CTS) on multiple devices to ensure compliance with Google's Android standards. Developed and maintained automated test scripts using Python to execute Android tests, focusing on device compatibility, app functionality, and UI interactions.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">WDIO</span>
+                        <span class="tech-tag">Appium</span>
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">QA Test Analyst II</h3>
+                            <p class="company">Meta</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Burlingame, CA</div>
+                            <div>Sep 2021 - May 2024</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Tested AR/VR applications to ensure product quality and user satisfaction. Utilized ADB to interact with Android devices for executing test cases, simulating user actions, and collecting device logs. Performed manual testing (Functional, GUI, System, Regression) and conducted manual and automated API testing for RESTful and SOAP APIs using Postman.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AR/VR Testing</span>
+                        <span class="tech-tag">Android ADB</span>
+                        <span class="tech-tag">API Testing</span>
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">RESTful APIs</span>
+                        <span class="tech-tag">SOAP APIs</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">User Acceptance Product Evaluator</h3>
+                            <p class="company">LinkedIn</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Sunnyvale, CA</div>
+                            <div>May 2022 - May 2023</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Led UAT for new product features, ensuring high-quality delivery and compliance. Tested web pages using Cypress + JavaScript. Scripted API test cases in Postman. Managed bug tracking, reported defects, and collaborated with developers for resolutions. Investigated software malfunctions and proposed improvements.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Cypress</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">UAT</span>
+                        <span class="tech-tag">Bug Tracking</span>
+                        <span class="tech-tag">Postman</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Manual QA Software Tester</h3>
+                            <p class="company">Russian School of Mathematics</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Sunnyvale, CA</div>
+                            <div>Jan 2017 - Aug 2021</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Created and executed test plans for desktop software. Used Cucumber with TypeScript for behavior-driven testing. Performed UI testing for Students/Teachers web portal on a regular basis. Reported metrics and results to stakeholders, providing actionable insights for improvements. Contributed to the team's skill development and process optimization.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Cucumber</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">UI Testing</span>
+                        <span class="tech-tag">Test Planning</span>
+                        <span class="tech-tag">BDD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-section">
+            <h2 style="margin-bottom: 1rem; color: #e2e8f0;">Ready to Connect?</h2>
+            <p style="margin-bottom: 2rem; color: #94a3b8;">Let's discuss how I can help elevate your testing strategy</p>
+            <a href="#" class="contact-button">Get In Touch</a>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const experienceItems = document.querySelectorAll('.experience-item');
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideInLeft 0.6s ease forwards';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            experienceItems.forEach(item => {
+                observer.observe(item);
+            });
+
+            // Add CSS for slide animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-50px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                
+                .experience-item {
+                    opacity: 0;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Add hover effects to badges
+            const badges = document.querySelectorAll('.badge');
+            badges.forEach(badge => {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
