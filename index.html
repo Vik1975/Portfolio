@@ -150,6 +150,9 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: inline-block;
         }
 
         .badge:hover {
@@ -157,6 +160,20 @@
             border-color: rgba(99, 102, 241, 0.6);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+            color: #ffffff;
+        }
+
+        .badge.istqb-cert {
+            background: rgba(236, 72, 153, 0.1);
+            border-color: rgba(236, 72, 153, 0.3);
+            color: #f9a8d4;
+        }
+
+        .badge.istqb-cert:hover {
+            background: rgba(236, 72, 153, 0.2);
+            border-color: rgba(236, 72, 153, 0.6);
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+            color: #ffffff;
         }
 
         .experience-section {
@@ -346,13 +363,14 @@
             <h1 class="name">Viktor Kabelkov</h1>
             <p class="title">Senior QA Automation Engineer</p>
             <div class="skills-badges">
-                <span class="badge">Python Automation</span>
-                <span class="badge">Selenium</span>
-                <span class="badge">Android Testing</span>
-                <span class="badge">API Testing</span>
-                <span class="badge">Cypress</span>
-                <span class="badge">Appium</span>
-                <span class="badge">AR/VR Testing</span>
+                <a href="https://docs.python.org/3/library/unittest.html" target="_blank" class="badge">Python Automation</a>
+                <a href="https://selenium.dev/" target="_blank" class="badge">Selenium</a>
+                <a href="https://developer.android.com/training/testing" target="_blank" class="badge">Android Testing</a>
+                <a href="https://restfulapi.net/" target="_blank" class="badge">API Testing</a>
+                <a href="https://www.cypress.io/" target="_blank" class="badge">Cypress</a>
+                <a href="https://appium.io/" target="_blank" class="badge">Appium</a>
+                <a href="https://developer.oculus.com/documentation/" target="_blank" class="badge">AR/VR Testing</a>
+                <a href="https://atsqa.org/certified-testers/profile/fe7f1b4d77f8402084974f1d0b5530c1" target="_blank" class="badge istqb-cert">ISTQB Certified</a>
             </div>
         </header>
 
