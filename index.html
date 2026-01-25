@@ -131,7 +131,7 @@
             font-size: 1.5rem;
             color: #94a3b8;
             margin-bottom: 2rem;
-        
+
         }
         .contact-info {
             font-size: 1em;
@@ -322,7 +322,7 @@
         .contact-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
-        
+
         }
         .contact-section {
             text-align: center;
@@ -355,20 +355,20 @@
             .name {
                 font-size: 2.5rem;
             }
-            
+
             .job-header {
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
+
             .location-date {
                 text-align: left;
             }
-            
+
             .experience-timeline {
                 padding-left: 2rem;
             }
-            
+
             .timeline-dot {
                 left: -1.5rem;
             }
@@ -389,7 +389,7 @@
             <div class="profile-image">
                 <!-- Replace "data:image/jpeg;base64,YOUR_IMAGE_HERE" with your actual photo -->
                 <!-- Or save your photo as "viktor-photo.jpg" in the same folder as this HTML file -->
-                <img id="profilePhoto" src="viktor-photo.jpg" alt="Viktor Kabelkov" 
+                <img id="profilePhoto" src="viktor-photo.jpg" alt="Viktor Kabelkov"
                      onerror="this.parentElement.innerHTML='<div style=&quot;display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; font-weight: bold; color: white; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%;&quot;>VK</div>'" />
             </div>
             <h1 class="name">Viktor Kabelkov</h1>
@@ -413,7 +413,7 @@
             <h2 class="section-title">Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
-                
+
                 <div class="experience-item">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
@@ -428,16 +428,16 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Testing AR/VR applications to ensure product quality and user satisfaction. Utilizing ADB to interact with Android devices for executing test cases, simulating user actions, and collecting device logs. Performing manual testing (Functional, GUI, System, Regression) and conducting manual and automated API testing using Postman. Creating test plans and cases based on PRDs. Validating AI model performance, bias detection, and algorithmic fairness in Meta's AI systems. Conducting specialized testing for computer vision, natural language processing, and recommendation algorithms.
+                        Translating functional requirements and user journeys into agent-executable test workflows, assessing whether automated test scenarios execute correctly end-to-end. Leading quality assurance for AR/VR applications, performing comprehensive functional, exploratory, system, and regression testing to ensure high-end user satisfaction. Verifying algorithmic fairness and detecting bias in AI/ML systems, validating model performance and providing structured feedback for continuous agent improvement. Created automated Python scripts for performance testing to measure events' launch time and data usage, saving 5 hours per test run. Developed comprehensive test plans and test cases in TestRail based on product requirements. Analyzing execution results, identifying trends in agent performance, and surfacing insights to recommend improvements for test reliability and automation effectiveness. Communicating testing status, findings, and risk assessments clearly to cross-functional stakeholders including engineers, product managers, and technical leadership.
                     </p>
                     <div class="tech-stack">
+                        <span class="tech-tag">AI-Powered QA Agent</span>
                         <span class="tech-tag">AR/VR Testing</span>
-                        <span class="tech-tag">AI Model Testing</span>
-                        <span class="tech-tag">Android ADB</span>
-                        <span class="tech-tag">API Testing</span>
-                        <span class="tech-tag">Postman</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">NLP Testing</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">TestRail</span>
+                        <span class="tech-tag">AI/ML Systems</span>
+                        <span class="tech-tag">Bias Detection</span>
                     </div>
                 </div>
 
@@ -454,16 +454,40 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Led manual and automated testing for Android devices and optimized mobile dashboards. Developed device management solutions to streamline security and enhance performance. Led the execution and analysis of Android Compatibility Test Suite (CTS) on multiple devices to ensure compliance with Google's Android standards. Developed and maintained automated test scripts using JavaScript to execute Android tests, focusing on device compatibility, app functionality, and UI interactions. Tested third-party healthcare peripherals for compatibility and performance. Performed API testing using Postman and executed monthly build sign-off tests. Created SQL queries for customer dashboards data ETL.
+                        Directed the execution of the Android Compatibility Test Suite (CTS) across multiple devices to guarantee compliance with Google standards. Developed and maintained automated test scripts in JavaScript for mobile device compatibility and UI interaction testing. Leveraged Appium and WDIO frameworks to boost test execution efficiency by 35% and cut manual testing efforts by 20%. Enhanced product quality by integrating early issue detection into the development cycle. Created an automated JavaScript test script for configuration deployment to Android devices, saving 4 hours per test run. Optimized mobile dashboards on Chrome/Firefox and developed device management solutions to enhance security and performance. Conducted API testing via Postman and validated third-party healthcare peripheral performance. Engineered SQL queries for customer dashboard data ETL (Extract, Transform, Load).
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Android CTS</span>
-                        <span class="tech-tag">Healthcare Peripherals</span>
                         <span class="tech-tag">Appium</span>
+                        <span class="tech-tag">WDIO</span>
                         <span class="tech-tag">Postman</span>
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">ETL</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">QA Test Analyst II</h3>
+                            <p class="company">Meta</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Burlingame, CA</div>
+                            <div>Sep 2021 - May 2022</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Conducted manual and mobile testing for AR/VR applications and iOS/Android devices. Utilized ADB to simulate user actions, execute test cases, and analyze device logs for root cause analysis. Developed comprehensive test plans and cases in TestRail based on Product Requirement Documents (PRDs). Applied Agile methodology principles, participating in sprint planning, daily standups, and retrospectives to drive continuous improvement.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AR/VR Testing</span>
+                        <span class="tech-tag">Android ADB</span>
+                        <span class="tech-tag">iOS Testing</span>
+                        <span class="tech-tag">TestRail</span>
+                        <span class="tech-tag">Agile</span>
                     </div>
                 </div>
 
@@ -480,14 +504,15 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Led UAT for new product features, ensuring high-quality delivery and compliance. Tested web pages using Cypress + JavaScript. Scripted API test cases in Postman. Managed bug tracking, reported defects, and collaborated with developers for resolutions. Investigated software malfunctions and proposed improvements.
+                        Led UAT (User Acceptance Testing) for new product features, ensuring compliance and high-quality delivery. Executed a11y (Accessibility) and i18n (Internationalization) testing on iOS and Android platforms. Conducted API testing using Postman to validate backend services, ensuring data integrity and proper endpoint functionality. Managed the full bug lifecycle using Jira, collaborating directly with developers to resolve software malfunctions.
                     </p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Cypress</span>
-                        <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">UAT</span>
-                        <span class="tech-tag">Bug Tracking</span>
+                        <span class="tech-tag">Accessibility Testing</span>
+                        <span class="tech-tag">i18n Testing</span>
+                        <span class="tech-tag">iOS/Android</span>
                         <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">Jira</span>
                     </div>
                 </div>
 
@@ -504,7 +529,7 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Created and executed test plans for desktop software. Used Cucumber/Selenium with TypeScript for behavior-driven web testing. Performed UI testing for Students/Teachers web portal on a regular basis. Reported metrics and results to stakeholders, providing actionable insights for improvements. Contributed to the team's skill development and process optimization.
+                        Created and executed test plans for desktop software, ensuring comprehensive coverage of functional requirements. Implemented Behavior-Driven Development (BDD) web testing using Cucumber, Selenium, and TypeScript. Performed UI testing for student/teacher web portals on a regular basis, identifying and documenting defects. Reported quality metrics and test results to stakeholders, providing actionable insights for product improvements.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Cucumber</span>
@@ -522,7 +547,7 @@
             <h2 class="section-title">Education</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
-                
+
                 <div class="experience-item">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
@@ -550,20 +575,41 @@
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
-                            <h3 class="job-title">Mechanical Engineering</h3>
+                            <h3 class="job-title">PhD in Mechanical Engineering</h3>
+                            <p class="company">Rostov Constructional State University</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Rostov, Russia</div>
+                            <div>02/2001 - 06/2004</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Doctoral degree in Mechanical Engineering with advanced research in engineering methodologies and analytical problem-solving.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Mechanical Engineering</span>
+                        <span class="tech-tag">Research</span>
+                        <span class="tech-tag">Problem Solving</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">M.D. in Applied Mathematics</h3>
                             <p class="company">Rostov State University</p>
                         </div>
                         <div class="location-date">
                             <div>Rostov, Russia</div>
-                            <div>September 1997</div>
+                            <div>09/1992 - 07/1997</div>
                         </div>
                     </div>
                     <p class="job-description">
-                        Bachelor's degree in Mechanical Engineering with specialization in Applied Mathematics. Strong foundation in mathematical modeling, problem-solving, and analytical thinking that translates well to software testing and quality assurance methodologies.
+                        Master's degree in Applied Mathematics with strong foundation in mathematical modeling, problem-solving, and analytical thinking that translates well to software testing and quality assurance methodologies.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Applied Mathematics</span>
-                        <span class="tech-tag">Engineering</span>
                         <span class="tech-tag">Mathematical Modeling</span>
                         <span class="tech-tag">Problem Solving</span>
                     </div>
@@ -582,7 +628,7 @@
         // Add some interactive animations
         document.addEventListener('DOMContentLoaded', function() {
             const experienceItems = document.querySelectorAll('.experience-item');
-            
+
             // Intersection Observer for scroll animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -609,7 +655,7 @@
                         transform: translateX(0);
                     }
                 }
-                
+
                 .experience-item {
                     opacity: 0;
                 }
@@ -622,7 +668,7 @@
                 badge.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-2px) scale(1.05)';
                 });
-                
+
                 badge.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
                 });
