@@ -3,442 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viktor Kabelkov - Senior QA Engineer</title>
+    <title>Viktor Kabelkov — Senior QA Automation Engineer &amp; Python Backend Developer</title>
+    <meta name="description" content="Senior QA Automation Engineer and Python backend developer. Test automation, API and backend quality, AR/VR and device testing. FastAPI, PostgreSQL, Selenium, Appium, Playwright.">
+    <meta property="og:title" content="Viktor Kabelkov — Senior QA Automation Engineer &amp; Python Backend Developer">
+    <meta property="og:description" content="Test automation, API and backend quality, AR/VR and device testing.">
+    <meta property="og:type" content="profile">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+    <script>document.documentElement.className += ' js';</script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-0: #0b0b1a;
+            --bg-1: #12122b;
+            --ink: #e6e9f2;
+            --ink-dim: #9aa4bd;
+            --ink-faint: #6b7590;
+            --indigo: #6366f1;
+            --violet: #8b5cf6;
+            --emerald: #10b981;
+            --pink: #ec4899;
+            --card: rgba(255, 255, 255, 0.045);
+            --card-hover: rgba(255, 255, 255, 0.075);
+            --line: rgba(255, 255, 255, 0.10);
+            --radius: 18px;
+            --maxw: 1080px;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
-            color: #e2e8f0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background:
+                radial-gradient(1100px 600px at 15% -10%, rgba(99, 102, 241, 0.22), transparent 60%),
+                radial-gradient(900px 500px at 90% 10%, rgba(139, 92, 246, 0.18), transparent 60%),
+                radial-gradient(800px 600px at 50% 100%, rgba(16, 185, 129, 0.10), transparent 60%),
+                linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-0) 100%);
+            background-attachment: fixed;
+            color: var(--ink);
+            line-height: 1.65;
             overflow-x: hidden;
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
+        /* ---------- ambient shapes ---------- */
+        .bg-animation { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
         .shape {
             position: absolute;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            background: linear-gradient(45deg, var(--indigo), var(--violet));
             border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
+            opacity: 0.07;
+            filter: blur(6px);
+            animation: float 26s infinite ease-in-out;
         }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 5s;
-        }
-
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 10s;
-        }
-
+        .shape:nth-child(1) { width: 90px;  height: 90px;  top: 18%; left: 8%;  animation-delay: 0s; }
+        .shape:nth-child(2) { width: 140px; height: 140px; top: 58%; right: 8%; animation-delay: 7s; }
+        .shape:nth-child(3) { width: 70px;  height: 70px;  bottom: 16%; left: 22%; animation-delay: 14s; }
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(20px) rotate(240deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33%      { transform: translateY(-34px) rotate(120deg); }
+            66%      { transform: translateY(22px)  rotate(240deg); }
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
+        /* ---------- nav ---------- */
+        .nav {
+            position: sticky; top: 0; z-index: 50;
+            backdrop-filter: blur(14px);
+            background: rgba(11, 11, 26, 0.72);
+            border-bottom: 1px solid var(--line);
         }
+        .nav-inner {
+            max-width: var(--maxw); margin: 0 auto;
+            padding: 0.85rem 2rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        }
+        .nav-brand { font-weight: 800; letter-spacing: -0.01em; font-size: 1rem; }
+        .nav-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--ink-dim); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--ink); }
 
-        .header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
+        .container { max-width: var(--maxw); margin: 0 auto; padding: 3.5rem 2rem 4rem; position: relative; z-index: 1; }
+
+        /* ---------- header ---------- */
+        .header { text-align: center; margin-bottom: 4.5rem; }
 
         .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
-            transition: transform 0.3s ease;
+            width: 148px; height: 148px; border-radius: 50%;
+            margin: 0 auto 1.75rem;
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.32);
+            transition: transform 0.35s ease;
             overflow: hidden;
-            border: 3px solid transparent;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
             padding: 3px;
         }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .profile-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+        .profile-image:hover { transform: scale(1.06) rotate(3deg); }
 
         .name {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;
+            background: linear-gradient(135deg, #a5b4fc, var(--violet) 45%, var(--pink));
+            -webkit-background-clip: text; background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 0.6rem;
         }
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.8)); }
-        }
+        .title { font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--ink-dim); font-weight: 500; margin-bottom: 1.4rem; }
+        .title strong { color: var(--ink); font-weight: 700; }
 
-        .title {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
+        .contact-info { font-size: 0.95rem; color: var(--ink-dim); margin-bottom: 2rem; }
+        .contact-info a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--line); }
+        .contact-info a:hover { color: var(--ink); }
+        .contact-sep { color: var(--ink-faint); margin: 0 0.5rem; }
 
+        .about {
+            max-width: 720px; margin: 0 auto 2.25rem;
+            color: var(--ink-dim); font-size: 1.02rem;
         }
-        .contact-info {
-            font-size: 1em;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-        }
-        .skills-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
+        .about strong { color: var(--ink); font-weight: 600; }
 
+        .skills-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; margin-bottom: 2.5rem; }
         .badge {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: #e2e8f0;
-            display: inline-block;
+            background: rgba(99, 102, 241, 0.10);
+            border: 1px solid rgba(99, 102, 241, 0.30);
+            padding: 0.45rem 1rem; border-radius: 999px;
+            font-size: 0.87rem; font-weight: 500;
+            color: var(--ink); text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
-
         .badge:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.6);
+            background: rgba(99, 102, 241, 0.20);
+            border-color: rgba(99, 102, 241, 0.60);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.28);
         }
+        .badge.accent-green { background: rgba(16, 185, 129, 0.10); border-color: rgba(16, 185, 129, 0.32); color: #6ee7b7; }
+        .badge.accent-green:hover { background: rgba(16, 185, 129, 0.20); border-color: rgba(16, 185, 129, 0.6); box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25); color: #fff; }
+        .badge.istqb-cert { background: rgba(236, 72, 153, 0.10); border-color: rgba(236, 72, 153, 0.32); color: #f9a8d4; }
+        .badge.istqb-cert:hover { background: rgba(236, 72, 153, 0.20); border-color: rgba(236, 72, 153, 0.6); box-shadow: 0 6px 18px rgba(236, 72, 153, 0.28); color: #fff; }
 
-        .badge.istqb-cert {
-            background: rgba(236, 72, 153, 0.1);
-            border-color: rgba(236, 72, 153, 0.3);
-            color: #f9a8d4;
-        }
+        .video-wrap { max-width: 760px; margin: 0 auto; }
+        .video-wrap video { width: 100%; border-radius: var(--radius); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5); display: block; }
 
-        .badge.istqb-cert:hover {
-            background: rgba(236, 72, 153, 0.2);
-            border-color: rgba(236, 72, 153, 0.6);
-            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
-            color: #ffffff;
-        }
-
-        .experience-section {
-            margin-bottom: 3rem;
-        }
-
+        /* ---------- sections ---------- */
+        .section { margin-bottom: 4.5rem; }
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+            font-size: clamp(1.7rem, 4vw, 2.3rem);
+            font-weight: 800; letter-spacing: -0.02em;
+            text-align: center; margin-bottom: 3rem; position: relative;
         }
-
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            border-radius: 2px;
+            content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+            width: 84px; height: 3px; border-radius: 2px;
+            background: linear-gradient(90deg, var(--indigo), var(--violet));
         }
 
-        .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
+        /* ---------- timeline ---------- */
+        .experience-timeline { position: relative; padding-left: 3rem; }
         .timeline-line {
-            position: absolute;
-            left: 1rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+            position: absolute; left: 1rem; top: 0.5rem; bottom: 0.5rem; width: 2px;
+            background: linear-gradient(to bottom, var(--emerald), var(--indigo) 22%, var(--violet));
+            opacity: 0.55;
         }
 
         .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.05);
+            position: relative; margin-bottom: 2rem;
+            background: var(--card);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            border: 1px solid var(--line);
+            transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
         }
-
         .experience-item:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateX(8px);
+            background: var(--card-hover);
+            border-color: rgba(99, 102, 241, 0.35);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
         }
+        .experience-item.is-current { border-color: rgba(16, 185, 129, 0.34); }
+        .experience-item.is-current:hover { border-color: rgba(16, 185, 129, 0.6); box-shadow: 0 14px 34px rgba(16, 185, 129, 0.14); }
 
         .timeline-dot {
-            position: absolute;
-            left: -2.5rem;
-            top: 2rem;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border-radius: 50%;
-            border: 4px solid #0f0f23;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+            position: absolute; left: -2.5rem; top: 2rem;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            border: 4px solid var(--bg-0);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.28);
+        }
+        .is-current .timeline-dot {
+            background: linear-gradient(135deg, var(--emerald), #34d399);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.28);
         }
 
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; }
+        .job-title { font-size: 1.22rem; font-weight: 700; color: #a5b4fc; letter-spacing: -0.01em; }
+        .is-current .job-title { color: #6ee7b7; }
+        .company { font-size: 1.02rem; font-weight: 600; color: var(--violet); }
+        .is-current .company { color: #34d399; }
+        .location-date { text-align: right; color: var(--ink-dim); font-size: 0.86rem; white-space: nowrap; }
+
+        .pill-current {
+            display: inline-block; margin-left: 0.55rem; vertical-align: middle;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            color: #6ee7b7; background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 0.12rem 0.5rem; border-radius: 999px;
         }
 
-        .job-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #6366f1;
-        }
+        .job-description { color: #c3cbdd; line-height: 1.72; margin-top: 0.9rem; font-size: 0.96rem; }
 
-        .company {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #8b5cf6;
-        }
-
-        .location-date {
-            text-align: right;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .job-description {
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-top: 1rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.1rem; }
         .tech-tag {
-            background: rgba(139, 92, 246, 0.2);
-            color: #c4b5fd;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.16);
+            color: #cbbdfa;
+            padding: 0.26rem 0.72rem; border-radius: 999px;
+            font-size: 0.78rem; font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.28);
         }
+        .is-current .tech-tag { background: rgba(16, 185, 129, 0.13); color: #8ae0be; border-color: rgba(16, 185, 129, 0.28); }
 
-        .contact-section {
-            text-align: center;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 25px;
+        /* ---------- skills grid ---------- */
+        .skills-grid {
+            display: grid; gap: 1.1rem;
+            grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+        }
+        .skill-card {
+            background: var(--card); border: 1px solid var(--line);
+            border-radius: var(--radius); padding: 1.4rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
+            transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
         }
-
-        .contact-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        .skill-card:hover { transform: translateY(-4px); background: var(--card-hover); border-color: rgba(99, 102, 241, 0.35); }
+        .skill-card h3 {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+            color: #a5b4fc; margin-bottom: 0.9rem;
         }
-
-        .contact-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
-
-        }
-        .contact-section {
-            text-align: center;
-            padding: 3rem;
+        .skill-card.green h3 { color: #6ee7b7; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .skill-list span {
+            font-size: 0.82rem; color: #c3cbdd;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
+            border: 1px solid var(--line);
+            padding: 0.24rem 0.66rem; border-radius: 8px;
         }
 
+        /* ---------- contact ---------- */
+        .contact-section {
+            text-align: center; padding: 3rem 2rem;
+            background: var(--card); border: 1px solid var(--line);
+            border-radius: 24px; backdrop-filter: blur(10px);
+        }
+        .contact-section h2 { margin-bottom: 0.75rem; font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; }
+        .contact-section p { margin-bottom: 1.9rem; color: var(--ink-dim); }
+        .contact-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; }
         .contact-button {
             display: inline-block;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff; padding: 0.85rem 1.8rem; border-radius: 999px;
+            text-decoration: none; font-weight: 600; font-size: 0.95rem;
+            box-shadow: 0 10px 28px rgba(99, 102, 241, 0.32);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .contact-button:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(99, 102, 241, 0.48); color: #fff; }
+        .contact-button.ghost {
+            background: transparent; border: 1px solid rgba(99, 102, 241, 0.5);
+            box-shadow: none; color: var(--ink);
+        }
+        .contact-button.ghost:hover { background: rgba(99, 102, 241, 0.14); box-shadow: none; }
+
+        .footer { text-align: center; color: var(--ink-faint); font-size: 0.85rem; padding: 2.5rem 2rem 3rem; }
+
+        /* ---------- scroll reveal (progressive enhancement) ---------- */
+        .js .reveal { opacity: 0; transform: translateY(22px); }
+        .js .reveal.visible {
+            opacity: 1; transform: none;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .contact-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
-            color: white;
-        }
+        /* ---------- responsive ---------- */
         @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
+            .container { padding: 2.5rem 1.15rem 3rem; }
+            .nav-inner { padding: 0.75rem 1.15rem; }
+            .nav-brand { display: none; }
+            .nav-links { width: 100%; justify-content: space-between; gap: 0.75rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .job-header { flex-direction: column; gap: 0.35rem; }
+            .location-date { text-align: left; white-space: normal; }
+            .experience-timeline { padding-left: 1.9rem; }
+            .timeline-line { left: 0.4rem; }
+            .timeline-dot { left: -1.62rem; top: 1.7rem; width: 15px; height: 15px; }
+            .experience-item { padding: 1.35rem; }
+            .experience-item:hover { transform: none; }
+        }
 
-            .job-header {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .location-date {
-                text-align: left;
-            }
-
-            .experience-timeline {
-                padding-left: 2rem;
-            }
-
-            .timeline-dot {
-                left: -1.5rem;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .shape { animation: none; }
+            .js .reveal { opacity: 1; transform: none; transition: none; }
+            .experience-item:hover, .skill-card:hover, .contact-button:hover, .profile-image:hover { transform: none; }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <span class="nav-brand">Viktor Kabelkov</span>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
         <header class="header">
             <div class="profile-image">
-                <!-- Replace "data:image/jpeg;base64,YOUR_IMAGE_HERE" with your actual photo -->
-                <!-- Or save your photo as "viktor-photo.jpg" in the same folder as this HTML file -->
                 <img id="profilePhoto" src="viktor-photo.jpg" alt="Viktor Kabelkov"
-                     onerror="this.parentElement.innerHTML='<div style=&quot;display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; font-weight: bold; color: white; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%;&quot;>VK</div>'" />
+                     onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:3rem;font-weight:bold;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;&quot;>VK</div>'" />
             </div>
             <h1 class="name">Viktor Kabelkov</h1>
-            <p class="title">Senior QA Automation Engineer</p>
+            <p class="title">Senior QA Automation Engineer <strong>&amp;</strong> Python Backend Developer</p>
             <div class="contact-info">
-                <strong>Email:</strong> vkabelkov@gmail.com | <strong>Phone:</strong> +14155259731 | <strong>Location:</strong> Folsom, CA
-            </div>
-            <div class="skills-badges">
-                <a href="https://docs.python.org/3/library/unittest.html" target="_blank" class="badge">Python Automation</a>
-                <a href="https://selenium.dev/" target="_blank" class="badge">Selenium</a>
-                <a href="https://developer.android.com/training/testing" target="_blank" class="badge">Android Testing</a>
-                <a href="https://restfulapi.net/" target="_blank" class="badge">API Testing</a>
-                <a href="https://www.cypress.io/" target="_blank" class="badge">Cypress</a>
-                <a href="https://appium.io/" target="_blank" class="badge">Appium</a>
-                <a href="https://developer.oculus.com/documentation/" target="_blank" class="badge">AR/VR Testing</a>
-                <a href="https://atsqa.org/certified-testers/profile/fe7f1b4d77f8402084974f1d0b5530c1" target="_blank" class="badge istqb-cert">ISTQB Certified</a>
+                <a href="mailto:vkabelkov@gmail.com">vkabelkov@gmail.com</a>
+                <span class="contact-sep">·</span>
+                <a href="tel:+14155259731">+1 415 525 9731</a>
+                <span class="contact-sep">·</span>
+                Folsom, CA
             </div>
 
-            <div style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <video width="100%" controls preload="metadata" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+            <p class="about">
+                Five-plus years testing software across web, mobile, and AR/VR platforms — and now building the
+                backend too. I write <strong>Python and FastAPI</strong> services against
+                <strong>PostgreSQL</strong> in a SOC&nbsp;2 and ISO&nbsp;27001 environment, and I design test
+                strategy for systems where the interesting failures live between components, not inside them.
+            </p>
+
+            <div class="skills-badges">
+                <a href="https://www.python.org/" target="_blank" rel="noopener" class="badge accent-green">Python</a>
+                <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener" class="badge accent-green">FastAPI</a>
+                <a href="https://www.postgresql.org/" target="_blank" rel="noopener" class="badge accent-green">PostgreSQL</a>
+                <a href="https://selenium.dev/" target="_blank" rel="noopener" class="badge">Selenium</a>
+                <a href="https://appium.io/" target="_blank" rel="noopener" class="badge">Appium</a>
+                <a href="https://playwright.dev/" target="_blank" rel="noopener" class="badge">Playwright</a>
+                <a href="https://restfulapi.net/" target="_blank" rel="noopener" class="badge">API Testing</a>
+                <a href="https://developer.android.com/training/testing" target="_blank" rel="noopener" class="badge">Android Testing</a>
+                <a href="https://atsqa.org/certified-testers/profile/fe7f1b4d77f8402084974f1d0b5530c1" target="_blank" rel="noopener" class="badge istqb-cert">ISTQB Certified</a>
+            </div>
+
+            <div class="video-wrap">
+                <video width="100%" controls preload="metadata">
                     <source src="LinkedIn_Resume_Video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </header>
 
-        <section class="experience-section">
+        <section class="section" id="experience">
             <h2 class="section-title">Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
 
-                <div class="experience-item">
+                <div class="experience-item is-current reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
-                            <h3 class="job-title">QA Test Analyst II</h3>
+                            <h3 class="job-title">Junior Software Developer, Backend<span class="pill-current">Current</span></h3>
+                            <p class="company">Zane Money</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Remote</div>
+                            <div>May 2026 - Present</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Backend development for a consumer fintech platform — personal banking, budgeting, and payments —
+                        operating under SOC 2 and ISO 27001 compliance with AES-256 data protection. Building and maintaining
+                        REST APIs in Python with the FastAPI framework. Designing and querying PostgreSQL databases through
+                        the SQLAlchemy ORM, managing schema evolution with Alembic migrations. Implementing API authentication
+                        and access control, including token-based auth and role and permission enforcement on protected
+                        endpoints. Writing pytest suites covering API endpoints and database logic to catch regressions before
+                        release. Building and running services in Docker containers for consistent local development and
+                        deployment.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">Alembic</span>
+                        <span class="tech-tag">pytest</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="experience-item is-current reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">QA Test Analyst II<span class="pill-current">Current</span></h3>
                             <p class="company">Meta</p>
                         </div>
                         <div class="location-date">
                             <div>Burlingame, CA</div>
-                            <div>Sep 2021 - May 2022</div>
                             <div>Aug 2024 - Present</div>
                         </div>
                     </div>
                     <p class="job-description">
-                        Translating functional requirements and user journeys into agent-executable test workflows, assessing whether automated test scenarios execute correctly end-to-end. Leading quality assurance for AR/VR applications, performing comprehensive functional, exploratory, system, and regression testing to ensure high-end user satisfaction. Verifying algorithmic fairness and detecting bias in AI/ML systems, validating model performance and providing structured feedback for continuous agent improvement. Created automated Python scripts for performance testing to measure events' launch time and data usage, saving 5 hours per test run. Developed comprehensive test plans and test cases in TestRail based on product requirements. Analyzing execution results, identifying trends in agent performance, and surfacing insights to recommend improvements for test reliability and automation effectiveness. Communicating testing status, findings, and risk assessments clearly to cross-functional stakeholders including engineers, product managers, and technical leadership.
+                        Translating functional requirements and user journeys into agent-executable test workflows, assessing
+                        whether automated test scenarios execute correctly end-to-end. Leading quality assurance for AR/VR
+                        applications, performing comprehensive functional, exploratory, system, and regression testing.
+                        Verifying algorithmic fairness and detecting bias in AI/ML systems, validating model performance and
+                        providing structured feedback for continuous agent improvement. Created automated Python scripts for
+                        performance testing to measure events' launch time and data usage, saving 5 hours per test run.
+                        Developing comprehensive test plans and test cases in TestRail based on product requirements.
+                        Analyzing execution results, identifying trends in agent performance, and surfacing insights to improve
+                        test reliability. Communicating testing status, findings, and risk assessments to engineers, product
+                        managers, and technical leadership.
                     </p>
                     <div class="tech-stack">
-                        <span class="tech-tag">AI-Powered QA Agent</span>
+                        <span class="tech-tag">AI-Powered QA Agents</span>
                         <span class="tech-tag">AR/VR Testing</span>
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">JavaScript</span>
@@ -448,7 +444,7 @@
                     </div>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
@@ -461,44 +457,28 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Directed the execution of the Android Compatibility Test Suite (CTS) across multiple devices to guarantee compliance with Google standards. Developed and maintained automated test scripts in JavaScript for mobile device compatibility and UI interaction testing. Leveraged Appium and WDIO frameworks to boost test execution efficiency by 35% and cut manual testing efforts by 20%. Enhanced product quality by integrating early issue detection into the development cycle. Created an automated JavaScript test script for configuration deployment to Android devices, saving 4 hours per test run. Optimized mobile dashboards on Chrome/Firefox and developed device management solutions to enhance security and performance. Conducted API testing via Postman and validated third-party healthcare peripheral performance. Engineered SQL queries for customer dashboard data ETL (Extract, Transform, Load).
+                        Directed the execution of the Android Compatibility Test Suite (CTS) across multiple devices to
+                        guarantee compliance with Google standards. Developed and maintained automated test scripts in
+                        JavaScript for mobile device compatibility and UI interaction testing. Leveraged Appium and WDIO
+                        frameworks to boost test execution efficiency by 35% and cut manual testing efforts by 20%, integrating
+                        early issue detection into the development cycle. Created an automated JavaScript test script for
+                        configuration deployment to Android devices, saving 4 hours per test run. Optimized mobile dashboards
+                        on Chrome/Firefox and developed device management solutions to enhance security and performance.
+                        Conducted API testing via Postman and validated third-party healthcare peripheral performance.
+                        Engineered SQL queries for customer dashboard data ETL.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Android CTS</span>
                         <span class="tech-tag">Appium</span>
-                        <span class="tech-tag">WDIO</span>
+                        <span class="tech-tag">WebdriverIO</span>
                         <span class="tech-tag">Postman</span>
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">ETL</span>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="timeline-dot"></div>
-                    <div class="job-header">
-                        <div>
-                            <h3 class="job-title">QA Test Analyst II</h3>
-                            <p class="company">Meta</p>
-                        </div>
-                        <div class="location-date">
-                            <div>Burlingame, CA</div>
-                            <div>Sep 2021 - May 2022</div>
-                        </div>
-                    </div>
-                    <p class="job-description">
-                        Conducted manual and mobile testing for AR/VR applications and iOS/Android devices. Utilized ADB to simulate user actions, execute test cases, and analyze device logs for root cause analysis. Developed comprehensive test plans and cases in TestRail based on Product Requirement Documents (PRDs). Applied Agile methodology principles, participating in sprint planning, daily standups, and retrospectives to drive continuous improvement.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">AR/VR Testing</span>
-                        <span class="tech-tag">Android ADB</span>
-                        <span class="tech-tag">iOS Testing</span>
-                        <span class="tech-tag">TestRail</span>
-                        <span class="tech-tag">Agile</span>
-                    </div>
-                </div>
-
-                <div class="experience-item">
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
@@ -511,19 +491,50 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Led UAT (User Acceptance Testing) for new product features, ensuring compliance and high-quality delivery. Executed a11y (Accessibility) and i18n (Internationalization) testing on iOS and Android platforms. Conducted API testing using Postman to validate backend services, ensuring data integrity and proper endpoint functionality. Managed the full bug lifecycle using Jira, collaborating directly with developers to resolve software malfunctions.
+                        Led UAT (User Acceptance Testing) for new product features, ensuring compliance and high-quality
+                        delivery. Executed a11y (Accessibility) and i18n (Internationalization) testing on iOS and Android
+                        platforms. Conducted API testing using Postman to validate backend services, ensuring data integrity
+                        and proper endpoint functionality. Managed the full bug lifecycle using Jira, collaborating directly
+                        with developers to resolve software malfunctions.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">UAT</span>
-                        <span class="tech-tag">Accessibility Testing</span>
-                        <span class="tech-tag">i18n Testing</span>
-                        <span class="tech-tag">iOS/Android</span>
+                        <span class="tech-tag">Accessibility</span>
+                        <span class="tech-tag">i18n</span>
+                        <span class="tech-tag">iOS / Android</span>
                         <span class="tech-tag">Postman</span>
                         <span class="tech-tag">Jira</span>
                     </div>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">QA Test Analyst II</h3>
+                            <p class="company">Meta</p>
+                        </div>
+                        <div class="location-date">
+                            <div>Burlingame, CA</div>
+                            <div>Sep 2021 - May 2022</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Conducted manual and mobile testing for AR/VR applications and iOS/Android devices. Utilized ADB to
+                        simulate user actions, execute test cases, and analyze device logs for root cause analysis. Developed
+                        comprehensive test plans and cases in TestRail based on Product Requirement Documents (PRDs). Applied
+                        Agile methodology principles, participating in sprint planning, daily standups, and retrospectives.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AR/VR Testing</span>
+                        <span class="tech-tag">Android ADB</span>
+                        <span class="tech-tag">iOS Testing</span>
+                        <span class="tech-tag">TestRail</span>
+                        <span class="tech-tag">Agile</span>
+                    </div>
+                </div>
+
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
@@ -536,30 +547,82 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Created and executed test plans for desktop software, ensuring comprehensive coverage of functional requirements. Implemented Behavior-Driven Development (BDD) web testing using Cucumber, Selenium, and TypeScript. Performed UI testing for student/teacher web portals on a regular basis, identifying and documenting defects. Reported quality metrics and test results to stakeholders, providing actionable insights for product improvements.
+                        Created and executed test plans for desktop software, ensuring comprehensive coverage of functional
+                        requirements. Implemented Behavior-Driven Development (BDD) web testing using Cucumber, Selenium, and
+                        TypeScript. Performed UI testing for student and teacher web portals, identifying and documenting
+                        defects. Reported quality metrics and test results to stakeholders, providing actionable insights for
+                        product improvements.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Cucumber</span>
                         <span class="tech-tag">Selenium</span>
                         <span class="tech-tag">TypeScript</span>
                         <span class="tech-tag">UI Testing</span>
-                        <span class="tech-tag">Test Planning</span>
                         <span class="tech-tag">BDD</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="experience-section">
+        <section class="section" id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card green reveal">
+                    <h3>Backend Development</h3>
+                    <div class="skill-list">
+                        <span>Python</span><span>FastAPI</span><span>REST API design</span>
+                        <span>SQLAlchemy</span><span>Alembic</span><span>pytest</span><span>Docker</span>
+                        <span>Auth &amp; access control</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <h3>Test Automation</h3>
+                    <div class="skill-list">
+                        <span>Selenium</span><span>Appium</span><span>Playwright</span>
+                        <span>Cypress</span><span>WebdriverIO</span><span>Cucumber</span><span>pytest</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <h3>API &amp; Backend Testing</h3>
+                    <div class="skill-list">
+                        <span>Postman</span><span>REST validation</span><span>Integration testing</span>
+                        <span>Data integrity</span><span>SQL verification</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <h3>Device &amp; Platform</h3>
+                    <div class="skill-list">
+                        <span>AR/VR headsets</span><span>Android CTS</span><span>ADB</span>
+                        <span>iOS (Xcode)</span><span>Cross-browser</span><span>Performance testing</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <h3>Data &amp; Cloud</h3>
+                    <div class="skill-list">
+                        <span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span>
+                        <span>ETL</span><span>AWS</span><span>Git</span><span>CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <h3>Process &amp; Quality</h3>
+                    <div class="skill-list">
+                        <span>TestRail</span><span>Jira</span><span>Test plan design</span>
+                        <span>Agile / Scrum</span><span>UAT</span><span>Shift-left</span><span>Root cause analysis</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="education">
             <h2 class="section-title">Education</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
 
-                <div class="experience-item">
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
-                            <h3 class="job-title">Data Analysis Certificate</h3>
+                            <h3 class="job-title">Data Analysis Graduate Program</h3>
                             <p class="company">UC Berkeley</p>
                         </div>
                         <div class="location-date">
@@ -568,7 +631,9 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Comprehensive program covering data analysis methodologies, statistical analysis, data visualization, and machine learning fundamentals. Gained expertise in working with large datasets and extracting actionable insights for business decision-making.
+                        Comprehensive program covering data analysis methodologies, statistical analysis, data visualization,
+                        and machine learning fundamentals. Gained expertise working with large datasets and extracting
+                        actionable insights for decision-making.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Data Analysis</span>
@@ -578,7 +643,7 @@
                     </div>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
@@ -591,7 +656,8 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Doctoral degree in Mechanical Engineering with advanced research in engineering methodologies and analytical problem-solving.
+                        Doctoral degree in Mechanical Engineering with advanced research in engineering methodologies and
+                        analytical problem-solving.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Mechanical Engineering</span>
@@ -600,11 +666,11 @@
                     </div>
                 </div>
 
-                <div class="experience-item">
+                <div class="experience-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-header">
                         <div>
-                            <h3 class="job-title">M.D. in Applied Mathematics</h3>
+                            <h3 class="job-title">M.S. in Applied Mathematics</h3>
                             <p class="company">Rostov State University</p>
                         </div>
                         <div class="location-date">
@@ -613,7 +679,9 @@
                         </div>
                     </div>
                     <p class="job-description">
-                        Master's degree in Applied Mathematics with strong foundation in mathematical modeling, problem-solving, and analytical thinking that translates well to software testing and quality assurance methodologies.
+                        Master's degree in Applied Mathematics with a strong foundation in mathematical modeling,
+                        problem-solving, and analytical thinking that translates directly to software testing and quality
+                        engineering.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Applied Mathematics</span>
@@ -624,61 +692,47 @@
             </div>
         </section>
 
-        <div class="contact-section">
-            <h2 style="margin-bottom: 1rem; color: #e2e8f0;">Ready to Connect?</h2>
-            <p style="margin-bottom: 2rem; color: #94a3b8;">Let's discuss how I can help elevate your testing strategy</p>
-            <a href="https://www.linkedin.com/in/vik-kabelkov" target="_blank" class="contact-button">View LinkedIn Profile</a>
+        <div class="contact-section reveal" id="contact">
+            <h2>Ready to Connect?</h2>
+            <p>Let's talk about testing strategy, backend quality, or building both into one team.</p>
+            <div class="contact-actions">
+                <a href="https://www.linkedin.com/in/vik-kabelkov" target="_blank" rel="noopener" class="contact-button">View LinkedIn Profile</a>
+                <a href="mailto:vkabelkov@gmail.com" class="contact-button ghost">Email Me</a>
+                <a href="https://github.com/Vik1975" target="_blank" rel="noopener" class="contact-button ghost">GitHub</a>
+            </div>
         </div>
     </div>
 
+    <footer class="footer">© 2026 Viktor Kabelkov · Folsom, CA</footer>
+
     <script>
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const experienceItems = document.querySelectorAll('.experience-item');
+        document.addEventListener('DOMContentLoaded', function () {
+            var items = document.querySelectorAll('.reveal');
 
-            // Intersection Observer for scroll animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('visible'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
-                        entry.target.style.animation = 'slideInLeft 0.6s ease forwards';
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-            experienceItems.forEach(item => {
-                observer.observe(item);
-            });
+            items.forEach(function (el) { observer.observe(el); });
 
-            // Add CSS for slide animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideInLeft {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                .experience-item {
-                    opacity: 0;
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Add hover effects to badges
-            const badges = document.querySelectorAll('.badge');
-            badges.forEach(badge => {
-                badge.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px) scale(1.05)';
-                });
-
-                badge.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
+            // Safety net: if anything is still hidden after load, show it.
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+                        var r = el.getBoundingClientRect();
+                        if (r.top < window.innerHeight) el.classList.add('visible');
+                    });
+                }, 400);
             });
         });
     </script>
